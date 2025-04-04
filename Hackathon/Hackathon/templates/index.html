@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Disease Diagnostic Portal</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="text-center my-5">
+            <h1 class="display-4">Farmers Disease Diagnostic Portal</h1>
+            <p class="lead">AI-powered disease detection for crops and livestock</p>
+        </header>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5>Upload Symptoms</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="diagnosisForm">
+                            <div class="mb-3">
+                                <label for="farmerId" class="form-label">Farmer ID</label>
+                                <input type="text" class="form-control" id="farmerId" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="location" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="location" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cropType" class="form-label">Crop/Livestock Type</label>
+                                <select class="form-select" id="cropType" required>
+                                    <option value="">Select type</option>
+                                    <option value="rice">Rice</option>
+                                    <option value="wheat">Wheat</option>
+                                    <option value="corn">Corn</option>
+                                    <option value="poultry">Poultry</option>
+                                    <option value="cattle">Cattle</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="symptomsImage" class="form-label">Upload Image of Symptoms</label>
+                                <input class="form-control" type="file" id="symptomsImage" accept="image/*" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="symptomsDesc" class="form-label">Symptoms Description</label>
+                                <textarea class="form-control" id="symptomsDesc" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit for Diagnosis</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5>Diagnosis Results</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="imagePreview" class="mb-3 text-center"></div>
+                        <div id="diagnosisResult" class="alert alert-info" style="display: none;"></div>
+                        <div id="recommendations" class="alert alert-warning" style="display: none;"></div>
+                        <div id="veterinarianAlert" class="alert alert-danger" style="display: none;">
+                            <strong>Alert:</strong> A veterinarian has been notified about this case.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5>Recent Reports</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Diagnosis</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportsTable">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
